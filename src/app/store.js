@@ -6,6 +6,6 @@ import articlesReducer from "../features/articles/articlesSlice";
 export default configureStore({
   reducer: {
     posts: postsReducer,
-    articles: articlesReducer
+    allArticles: articlesReducer
   }
 });

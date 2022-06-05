@@ -22,7 +22,7 @@ const articlesSlice = createSlice({
   initialState,
   reducers: {
     addArticles(state, action) {
-      state.push(action.payload);
+      state.articles.push(action.payload);
     }
   }
 });
@@ -33,13 +33,13 @@ export const getArticles = (data) => async (dispatch) => {
     // console.log(data);
     const response = await axios.get(`${API_URL}`); // {API_URL}/${data}
     console.log("response", response);
-    dispatch(addArticles(response.articles));
+    dispatch(addArticles(response.data.response.docs));
   } catch (err) {
     console.log(err);
   }
 };
 
-export const fetchAllArticles = (state) => state.allArticles;
+export const fetchAllArticles = (state) => state.allArticles.articles;
 
 export const fetchArticleById = (state, articleId) =>
   state.allArticles.articles.find((article) => article.id === articleId);
